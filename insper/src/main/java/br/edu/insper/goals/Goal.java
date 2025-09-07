@@ -18,6 +18,10 @@ public class Goal {
     @Column(nullable = false)
     private LocalDate end = LocalDate.now();
 
+    public int getId() {
+        return id;
+    }
+
     public String getDescription() {
         return description;
     }
