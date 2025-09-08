@@ -1,0 +1,10 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+insper.projeto-zambom,br.edu.insper.balance,BalanceService,0,58,0,0,0,12,0,7,0,7
+insper.projeto-zambom,br.edu.insper.balance,Balance,0,38,0,0,0,16,0,11,0,11
+insper.projeto-zambom,br.edu.insper.balance,TransactionType,0,15,0,0,0,3,0,1,0,1
+insper.projeto-zambom,br.edu.insper.balance,BalanceController,0,48,0,4,0,11,0,7,0,5
+insper.projeto-zambom,br.edu.insper,Application,5,3,0,0,2,1,1,1,1,1
+insper.projeto-zambom,br.edu.insper.goals,GoalController,47,3,8,0,10,1,8,1,4,1
+insper.projeto-zambom,br.edu.insper.goals,Goal,24,9,0,0,10,5,7,1,7,1
+insper.projeto-zambom,br.edu.insper.goals,GoalService,63,3,0,0,12,1,6,1,6,1
+insper.projeto-zambom,br.edu.insper.summary,Summary,3,0,0,0,1,0,1,0,1,0

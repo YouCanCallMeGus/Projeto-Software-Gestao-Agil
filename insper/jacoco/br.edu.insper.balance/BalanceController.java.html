@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BalanceController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">insper.projeto-zambom</a> &gt; <a href="index.source.html" class="el_package">br.edu.insper.balance</a> &gt; <span class="el_source">BalanceController.java</span></div><h1>BalanceController.java</h1><pre class="source lang-java linenums">package br.edu.insper.balance;
+
+import jakarta.validation.constraints.Null;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
+@RestController
+<span class="fc" id="L10">public class BalanceController {</span>
+
+    @Autowired
+    private BalanceService balanceService;
+
+    @GetMapping(&quot;/transaction/{id}&quot;)
+    public Balance getDeposit(@PathVariable Integer id) {
+<span class="fc" id="L17">        Balance balance = balanceService.getBalance(id);</span>
+<span class="fc bfc" id="L18" title="All 2 branches covered.">        if (balance.getId() != 0) {</span>
+<span class="fc" id="L19">            return balance;</span>
+        }
+<span class="fc" id="L21">        throw new ResponseStatusException(HttpStatus.NOT_FOUND);</span>
+    }
+
+    @PostMapping(&quot;/transaction&quot;)
+    @ResponseStatus(HttpStatus.CREATED)
+    public Balance postDeposit(@RequestBody Balance deposit) {
+<span class="fc" id="L27">        balanceService.saveBalance(deposit);</span>
+<span class="fc" id="L28">        return deposit;</span>
+    }
+
+    @PutMapping(&quot;/transaction/{id}&quot;)
+    public Balance putDeposit(@PathVariable Integer id, @RequestBody Balance updatedBalance) {
+<span class="fc bfc" id="L33" title="All 2 branches covered.">        if (updatedBalance.getAmount() == 0) {</span>
+<span class="fc" id="L34">            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);</span>
+        }
+<span class="fc" id="L36">        return balanceService.updateBalance(id, updatedBalance);</span>
+    }
+
+    @DeleteMapping(&quot;/transaction/{id}&quot;)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public Balance deleteDeposit(@PathVariable Integer id) {
+<span class="fc" id="L42">        return balanceService.removeBalance(id);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

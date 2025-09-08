@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Balance.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">insper.projeto-zambom</a> &gt; <a href="index.source.html" class="el_package">br.edu.insper.balance</a> &gt; <span class="el_source">Balance.java</span></div><h1>Balance.java</h1><pre class="source lang-java linenums">package br.edu.insper.balance;
+
+import jakarta.persistence.*;
+
+import java.time.LocalDate;
+
+@Entity
+<span class="fc" id="L8">public class Balance {</span>
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(nullable = false)
+    private double amount;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private TransactionType type;
+    @Column(nullable = false)
+    private LocalDate date;
+    @Column(nullable = false)
+    private String description;
+
+    public TransactionType getType() {
+<span class="fc" id="L24">        return type;</span>
+    }
+
+    public void setType(TransactionType type) {
+<span class="fc" id="L28">        this.type = type;</span>
+<span class="fc" id="L29">    }</span>
+
+    public int getId() {
+<span class="fc" id="L32">        return id;</span>
+    }
+
+    public void setId(int id) {
+<span class="fc" id="L36">        this.id = id;</span>
+<span class="fc" id="L37">    }</span>
+
+    public String getDescription() {
+<span class="fc" id="L40">        return description;</span>
+    }
+
+    public void setDescription(String description) {
+<span class="fc" id="L44">        this.description = description;</span>
+<span class="fc" id="L45">    }</span>
+
+    public double getAmount() {
+<span class="fc" id="L48">        return amount;</span>
+    }
+
+    public void setAmount(double amount) {
+<span class="fc" id="L52">        this.amount = amount;</span>
+<span class="fc" id="L53">    }</span>
+
+    public LocalDate getDate() {
+<span class="fc" id="L56">        return date;</span>
+    }
+
+    public void setDate(LocalDate date) {
+<span class="fc" id="L60">        this.date = date;</span>
+<span class="fc" id="L61">    }</span>
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
