@@ -13,31 +13,31 @@ import org.springframework.web.server.ResponseStatusException;
 
     @GetMapping(&quot;/goal/{id}&quot;)
     public Goal getGoal(@PathVariable int id){
-<span class="nc" id="L16">        Goal goal = goalService.getGoal(id);</span>
-<span class="nc bnc" id="L17" title="All 2 branches missed.">        if (goal.getId() == 0) {</span>
-<span class="nc" id="L18">            throw new ResponseStatusException(HttpStatus.NOT_FOUND);</span>
+<span class="fc" id="L16">        Goal goal = goalService.getGoal(id);</span>
+<span class="fc bfc" id="L17" title="All 2 branches covered.">        if (goal.getId() == 0) {</span>
+<span class="fc" id="L18">            throw new ResponseStatusException(HttpStatus.NOT_FOUND);</span>
         }
-<span class="nc" id="L20">        return goal;</span>
+<span class="fc" id="L20">        return goal;</span>
     }
 
     @PostMapping(&quot;/goal&quot;)
     public Goal postGoal(@RequestBody Goal goal) {
-<span class="nc" id="L25">        goalService.postGoal(goal);</span>
-<span class="nc" id="L26">        return goal;</span>
+<span class="fc" id="L25">        goalService.postGoal(goal);</span>
+<span class="fc" id="L26">        return goal;</span>
     }
 
     @PutMapping(&quot;/goal/{id}&quot;)
     public Goal putGoal(@PathVariable int id, @RequestBody Goal updatedGoal) {
-<span class="nc bnc" id="L31" title="All 6 branches missed.">        if (updatedGoal.getDescription().isEmpty() || updatedGoal.getStart() == null || updatedGoal.getEnd() == null ) {</span>
-<span class="nc" id="L32">            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">        if (updatedGoal.getDescription() == null) {</span>
+<span class="fc" id="L32">            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);</span>
         }
-<span class="nc" id="L34">        return goalService.updateGoal(id, updatedGoal);</span>
+<span class="fc" id="L34">        return goalService.updateGoal(id, updatedGoal);</span>
     }
 
     @DeleteMapping(&quot;/goal/{id}&quot;)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public Goal deleteGoal(@PathVariable int id) {
-<span class="nc" id="L40">        return goalService.removeGoal(id);</span>
+<span class="fc" id="L40">        return goalService.removeGoal(id);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -28,7 +28,7 @@ public class GoalController {
 
     @PutMapping("/goal/{id}")
     public Goal putGoal(@PathVariable int id, @RequestBody Goal updatedGoal) {
-        if (updatedGoal.getDescription().isEmpty() || updatedGoal.getStart() == null || updatedGoal.getEnd() == null ) {
+        if (updatedGoal.getDescription() == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
         return goalService.updateGoal(id, updatedGoal);
