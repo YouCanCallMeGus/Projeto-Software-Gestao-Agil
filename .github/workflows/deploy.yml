@@ -39,8 +39,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: .
-          file: ./insper/Dockerfile
+          context: ./insper
+          file: ./Dockerfile
           push: true
           tags: youcancallmegus/projeto-intermediario-ci:${{ github.sha }}
 
