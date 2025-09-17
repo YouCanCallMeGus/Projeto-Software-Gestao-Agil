@@ -54,4 +54,4 @@ jobs:
           script: |
             docker stop projeto-intermediario
             docker rm --force projeto-intermediario
-            docker run -d -p 8080:8080 --name projeto-intermediario youcancallmegus/insper.projeto-intermediario-ci:${{ github.sha }}
+            docker run -d -p 8080:8080 --name projeto-intermediario youcancallmegus/projeto-intermediario-ci:${{ github.sha }}
