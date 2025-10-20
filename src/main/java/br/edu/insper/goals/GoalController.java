@@ -17,10 +17,8 @@ public class GoalController {
     public Goal getGoal(@AuthenticationPrincipal Jwt jwt, @PathVariable int id){
         Goal goal = goalService.getGoal(id);
         String email = jwt.getClaimAsString("https://stocks-insper.com/email");
+        System.out.println("ok");
 
-        if (email.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
-        }
         if (goal.getId() == 0) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
