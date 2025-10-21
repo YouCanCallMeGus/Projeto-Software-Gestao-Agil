@@ -32,4 +32,23 @@ public class BalanceService {
                 })
                 .orElseThrow(() -> new RuntimeException("Balance not found"));
     }
+
+    public List<Balance> getAllTransactions() {
+        return balanceRepository.findAll();
+    }
+
+    public double calculateTotalBalance() {
+        List<Balance> transactions = balanceRepository.findAll();
+        double total = 0.0;
+        
+        for (Balance transaction : transactions) {
+            if (transaction.getType() == TransactionType.DEPOSIT) {
+                total += transaction.getAmount();
+            } else if (transaction.getType() == TransactionType.WITHDRAWAL) {
+                total -= transaction.getAmount();
+            }
+        }
+        
+        return total;
+    }
 }

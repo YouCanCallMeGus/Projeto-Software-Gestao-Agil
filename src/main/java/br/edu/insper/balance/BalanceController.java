@@ -6,6 +6,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @RestController
 public class BalanceController {
 
@@ -40,6 +44,19 @@ public class BalanceController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public Balance deleteDeposit(@PathVariable Integer id) {
         return balanceService.removeBalance(id);
+    }
+
+    @GetMapping("/transactions")
+    public List<Balance> getAllTransactions() {
+        return balanceService.getAllTransactions();
+    }
+
+    @GetMapping("/balance")
+    public Map<String, Double> getTotalBalance() {
+        double total = balanceService.calculateTotalBalance();
+        Map<String, Double> response = new HashMap<>();
+        response.put("balance", total);
+        return response;
     }
 
 }

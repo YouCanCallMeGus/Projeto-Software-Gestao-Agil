@@ -7,6 +7,8 @@ import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
+
 @RestController
 public class GoalController {
 
@@ -59,5 +61,12 @@ public class GoalController {
         }
 
         return goalService.removeGoal(id);
+    }
+
+    @GetMapping("/goals")
+    public List<Goal> getAllGoals(@AuthenticationPrincipal Jwt jwt) {
+        String email = jwt.getClaimAsString("https://stocks-insper.com/email");
+        System.out.println("Listing all goals for user: " + email);
+        return goalService.getAllGoals();
     }
 }
