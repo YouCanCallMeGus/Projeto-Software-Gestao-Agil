@@ -51,4 +51,8 @@ public class BalanceService {
         
         return total;
     }
+
+    public List<Balance> getBalanceByMonth(int month) {
+        return balanceRepository.findByMonth(month);
+    }
 }
