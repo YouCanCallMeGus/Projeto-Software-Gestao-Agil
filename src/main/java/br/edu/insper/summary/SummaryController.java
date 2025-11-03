@@ -20,4 +20,3 @@ public class SummaryController {
         return summaryService.getByMonth(month);
     }
 }
-
