@@ -22,11 +22,14 @@ public class BalanceService {
             balance.setMonth(month);
         }
 
-        User user = userRepository.findByEmail(balance.getUser().getEmail());
-        balance.setUser(user);
+        if (balance.getUser() != null) {
+            User user = userRepository.findByEmail(balance.getUser().getEmail());
+            balance.setUser(user);
+    
+            String userEmail = balance.getUser().getEmail();
+            balance.setUserEmail(userEmail);
+        }
 
-        String userEmail = balance.getUser().getEmail();
-        balance.setUserEmail(userEmail);
         balanceRepository.save(balance);
     }
 
