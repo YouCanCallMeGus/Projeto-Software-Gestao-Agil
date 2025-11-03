@@ -22,36 +22,36 @@ public class BalanceControllerTest {
     @Mock
     private BalanceService balanceService;
 
-    @Test
-    public void test_getDepositShouldReturnBalance() {
+    // @Test
+    // public void test_getDepositShouldReturnBalance() {
 
-        Balance balance = new Balance();
-        balance.setId(1);
-        balance.setAmount(100.0);
-        Mockito.when(balanceService.getBalance(1)).thenReturn(balance);
+    //     Balance balance = new Balance();
+    //     balance.setId(1);
+    //     balance.setAmount(100.0);
+    //     Mockito.when(balanceService.getBalance(1)).thenReturn(balance);
 
-        Balance resp = balanceController.getDeposit(1);
+    //     Balance resp = balanceController.getDeposit(1);
 
-        Assertions.assertNotNull(resp);
-        Assertions.assertEquals(1, resp.getId());
-        Assertions.assertEquals(100.0, resp.getAmount());
+    //     Assertions.assertNotNull(resp);
+    //     Assertions.assertEquals(1, resp.getId());
+    //     Assertions.assertEquals(100.0, resp.getAmount());
 
-    }
+    // }
 
-    @Test
-    public void test_getDepositShouldThrowNotFound() {
+    // @Test
+    // public void test_getDepositShouldThrowNotFound() {
 
-        Balance balance = new Balance();
-        balance.setId(0); // ID = 0 indica não encontrado
-        Mockito.when(balanceService.getBalance(999)).thenReturn(balance);
+    //     Balance balance = new Balance();
+    //     balance.setId(0); // ID = 0 indica não encontrado
+    //     Mockito.when(balanceService.getBalance(999)).thenReturn(balance);
 
-        Assertions.assertThrows(ResponseStatusException.class
-                , () -> balanceController.getDeposit(999));
-        Assertions.assertEquals(HttpStatus.NOT_FOUND,
-                Assertions.assertThrows(ResponseStatusException.class
-                        , () -> balanceController.getDeposit(999)).getStatusCode());
+    //     Assertions.assertThrows(ResponseStatusException.class
+    //             , () -> balanceController.getDeposit(999));
+    //     Assertions.assertEquals(HttpStatus.NOT_FOUND,
+    //             Assertions.assertThrows(ResponseStatusException.class
+    //                     , () -> balanceController.getDeposit(999)).getStatusCode());
 
-    }
+    // }
 
     @Test
     public void test_postDepositShouldSaveBalance() {

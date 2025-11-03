@@ -4,6 +4,10 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import br.edu.insper.user.User;
+
 @Entity
 public class Balance {
     @Id
@@ -19,6 +23,13 @@ public class Balance {
     private LocalDate date;
     @Column(nullable = false)
     private String description;
+    @Column(nullable = false)
+    private int month;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+    @Column(nullable = false)
+    private String userEmail;
 
     public TransactionType getType() {
         return type;
@@ -58,6 +69,30 @@ public class Balance {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 }
 
