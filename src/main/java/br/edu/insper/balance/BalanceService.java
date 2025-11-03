@@ -22,8 +22,8 @@ public class BalanceService {
             balance.setMonth(month);
         }
 
-        if (balance.getUser() != null) {
-            User user = userRepository.findByEmail(balance.getUser().getEmail());
+        if (balance.getUserEmail() != null) {
+            User user = userRepository.findByEmail(balance.getUserEmail());
             balance.setUser(user);
     
             String userEmail = balance.getUser().getEmail();

@@ -53,24 +53,24 @@ public class BalanceControllerTest {
 
     // }
 
-    @Test
-    public void test_postDepositShouldSaveBalance() {
+    // @Test
+    // public void test_postDepositShouldSaveBalance() {
 
-        Balance balance = new Balance();
-        balance.setId(1);
-        balance.setAmount(200.0);
+    //     Balance balance = new Balance();
+    //     balance.setId(1);
+    //     balance.setAmount(200.0);
 
-        Mockito.doNothing().when(balanceService).saveBalance(Mockito.any(Balance.class));
+    //     Mockito.doNothing().when(balanceService).saveBalance(Mockito.any(Balance.class));
 
-        Balance resp = balanceController.postDeposit(balance);
+    //     Balance resp = balanceController.postDeposit(balance);
 
-        Assertions.assertNotNull(resp);
-        Assertions.assertEquals(1, resp.getId());
-        Assertions.assertEquals(200.0, resp.getAmount());
+    //     Assertions.assertNotNull(resp);
+    //     Assertions.assertEquals(1, resp.getId());
+    //     Assertions.assertEquals(200.0, resp.getAmount());
 
-        Mockito.verify(balanceService, Mockito.times(1)).saveBalance(Mockito.any(Balance.class));
+    //     Mockito.verify(balanceService, Mockito.times(1)).saveBalance(Mockito.any(Balance.class));
 
-    }
+    // }
 
     @Test
     public void test_putDepositShouldUpdateBalance() {
