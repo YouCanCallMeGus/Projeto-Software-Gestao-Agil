@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.jwt.Jwt;
 
 import java.util.HashMap;
 import java.util.List;
@@ -34,9 +36,31 @@ public class BalanceController {
         throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
 
+    @GetMapping("/transaction")
+    public List<Balance> getDepositByEmail(@AuthenticationPrincipal Jwt jwt) {
+        String email = jwt.getClaimAsString("https://stocks-insper.com/email");
+
+        if (email.isEmpty()) {
+            throw new RuntimeException("Unauthorized");
+        }
+
+        List<Balance> balance = balanceService.getBalanceByUserEmail(email);
+        if (balance != null) {
+            return balance;
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    }
+
     @PostMapping("/transaction")
     @ResponseStatus(HttpStatus.CREATED)
-    public Balance postDeposit(@RequestBody Balance deposit) {
+    public Balance postDeposit(@RequestBody Balance deposit, @AuthenticationPrincipal Jwt jwt) {
+        String email = jwt.getClaimAsString("https://stocks-insper.com/email");
+
+        if (email.isEmpty()) {
+            throw new RuntimeException("Unauthorized");
+        }
+
+        deposit.setUserEmail(email);
         balanceService.saveBalance(deposit);
         return deposit;
     }
