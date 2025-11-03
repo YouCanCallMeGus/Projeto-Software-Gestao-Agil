@@ -17,8 +17,10 @@ public class BalanceService {
     private UserRepository userRepository;
 
     public void saveBalance(Balance balance) {
-        int month = balance.getDate().getMonthValue();
-        balance.setMonth(month);
+        if (balance.getDate() != null) {
+            int month = balance.getDate().getMonthValue();
+            balance.setMonth(month);
+        }
 
         User user = userRepository.findByEmail(balance.getUser().getEmail());
         balance.setUser(user);
