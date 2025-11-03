@@ -16,10 +16,19 @@ public class BalanceController {
     @Autowired
     private BalanceService balanceService;
 
-    @GetMapping("/transaction/{id}")
-    public Balance getDeposit(@PathVariable Integer id) {
-        Balance balance = balanceService.getBalance(id);
-        if (balance.getId() != 0) {
+    // @GetMapping("/transaction/{id}")
+    // public Balance getDeposit(@PathVariable Integer id) {
+    //     Balance balance = balanceService.getBalance(id);
+    //     if (balance.getId() != 0) {
+    //         return balance;
+    //     }
+    //     throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    // }
+
+    @GetMapping("/transaction/{userEmail}")
+    public List<Balance> getDepositByEmail(@PathVariable String userEmail) {
+        List<Balance> balance = balanceService.getBalanceByUserEmail(userEmail);
+        if (balance != null) {
             return balance;
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND);

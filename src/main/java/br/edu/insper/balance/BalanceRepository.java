@@ -8,4 +8,5 @@ import java.util.List;
 @Repository
 public interface BalanceRepository extends JpaRepository<Balance, Integer> {
     public List<Balance> findByMonth(int month);
+    public List<Balance> findByUserEmail(String userEmail);
 }
