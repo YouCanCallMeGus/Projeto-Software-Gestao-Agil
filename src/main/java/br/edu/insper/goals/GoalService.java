@@ -74,7 +74,7 @@ public class GoalService {
         return goalRepository.findAll();
     }
 
-    public Goal getGoalByUserEmail(String userEmail) {
+    public List<Goal> getGoalByUserEmail(String userEmail) {
         return goalRepository.findByUserEmail(userEmail);
     }
 }

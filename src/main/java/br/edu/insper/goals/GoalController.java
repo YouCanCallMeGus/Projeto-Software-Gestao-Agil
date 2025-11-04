@@ -73,16 +73,15 @@ public class GoalController {
     }
 
     @GetMapping("/goal")
-    public Goal getGoalByEmail(@AuthenticationPrincipal Jwt jwt) {
+    public List<Goal> getGoalByEmail(@AuthenticationPrincipal Jwt jwt) {
         String email = jwt.getClaimAsString("https://stocks-insper.com/email");
 
         if (email.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }
 
-        Goal goal = goalService.getGoalByUserEmail(email);
-        if (goal != null) {
-            return goal;
+        if (goalService.getGoalByUserEmail(email) != null) {
+            return goalService.getGoalByUserEmail(email);
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
