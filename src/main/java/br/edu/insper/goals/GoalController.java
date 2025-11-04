@@ -34,6 +34,8 @@ public class GoalController {
         if (email.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }
+
+        goal.setUserEmail(email);
         goalService.postGoal(goal);
         return goal;
     }
@@ -68,5 +70,20 @@ public class GoalController {
         String email = jwt.getClaimAsString("https://stocks-insper.com/email");
         System.out.println("Listing all goals for user: " + email);
         return goalService.getAllGoals();
+    }
+
+    @GetMapping("/goal")
+    public Goal getGoalByEmail(@AuthenticationPrincipal Jwt jwt) {
+        String email = jwt.getClaimAsString("https://stocks-insper.com/email");
+
+        if (email.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
+        }
+
+        Goal goal = goalService.getGoalByUserEmail(email);
+        if (goal != null) {
+            return goal;
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
 }

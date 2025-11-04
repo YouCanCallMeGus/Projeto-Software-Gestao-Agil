@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface GoalRepository extends JpaRepository<Goal, Integer>{
-
+    public Goal findByUserEmail(String userEmail);
 }
