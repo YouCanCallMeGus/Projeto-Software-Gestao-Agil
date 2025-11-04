@@ -3,6 +3,9 @@ package br.edu.insper.goals;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.edu.insper.user.User;
+import br.edu.insper.user.UserRepository;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -11,6 +14,9 @@ import java.util.Optional;
 public class GoalService {
     @Autowired
     private GoalRepository goalRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     public Goal getGoal(int id) {
         Optional<Goal> goal = goalRepository.findById(id);
@@ -28,6 +34,11 @@ public class GoalService {
     }
 
     public void postGoal(Goal goal) {
+        if (goal.getUserEmail() != null) {
+            User user = userRepository.findByEmail(goal.getUserEmail());
+            goal.setUser(user);
+        }
+
         goalRepository.save(goal);
     }
 
@@ -61,5 +72,9 @@ public class GoalService {
 
     public List<Goal> getAllGoals() {
         return goalRepository.findAll();
+    }
+
+    public Goal getGoalByUserEmail(String userEmail) {
+        return goalRepository.findByUserEmail(userEmail);
     }
 }

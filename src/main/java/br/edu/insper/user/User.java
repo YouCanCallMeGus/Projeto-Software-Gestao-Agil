@@ -5,6 +5,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.edu.insper.balance.Balance;
+import br.edu.insper.goals.Goal;
 import jakarta.persistence.*;
 
 @Entity
@@ -22,6 +23,10 @@ public class User {
     @OneToMany(mappedBy = "user")
     @JsonIgnore
     private List<Balance> balance;
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<Goal> goals;
 
     public int getId() {
         return id;
@@ -53,5 +58,13 @@ public class User {
 
     public void setBalance(List<Balance> balance) {
         this.balance = balance;
+    }
+
+    public List<Goal> getGoals() {
+        return goals;
+    }
+
+    public void setGoals(List<Goal> goals) {
+        this.goals = goals;
     }
 }
