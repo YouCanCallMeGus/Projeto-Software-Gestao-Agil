@@ -13,8 +13,8 @@ public class SummaryService {
     @Autowired
     private BalanceService balanceService;
 
-    public List<Balance> getByMonth(int month) {
-        List<Balance> balances = balanceService.getBalanceByMonth(month);
+    public List<Balance> getByMonthAndEmail(int month, String email) {
+        List<Balance> balances = balanceService.getBalanceByMonthAndEmail(month, email);
         if (balances.isEmpty()) {
             throw new RuntimeException("error");
         }

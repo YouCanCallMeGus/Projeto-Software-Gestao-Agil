@@ -71,8 +71,8 @@ public class BalanceService {
         return total;
     }
 
-    public List<Balance> getBalanceByMonth(int month) {
-        return balanceRepository.findByMonth(month);
+    public List<Balance> getBalanceByMonthAndEmail(int month, String email) {
+        return balanceRepository.findByMonthAndUserEmail(month, email);
     }
 
     public List<Balance> getBalanceByUserEmail(String userEmail) {
