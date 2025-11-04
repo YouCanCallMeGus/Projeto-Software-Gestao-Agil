@@ -24,7 +24,7 @@ public class WebSecurityConfig implements WebMvcConfigurer {
                 .allowedOrigins(
                         "http://localhost:5173",
                         "http://localhost:3000",
-                        "https://projeto-software-gestao-agil-front-swart.vercel.app/"
+                        "https://projeto-software-gestao-agil-front-swart.vercel.app"
                 )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
@@ -38,7 +38,7 @@ public class WebSecurityConfig implements WebMvcConfigurer {
         configuration.setAllowedOrigins(Arrays.asList(
                 "http://localhost:5173",
                 "http://localhost:3000",
-                "https://projeto-software-gestao-agil-front-swart.vercel.app/"
+                "https://projeto-software-gestao-agil-front-swart.vercel.app"
         ));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
