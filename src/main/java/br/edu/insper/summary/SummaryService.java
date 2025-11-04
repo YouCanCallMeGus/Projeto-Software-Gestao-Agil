@@ -15,9 +15,7 @@ public class SummaryService {
 
     public List<Balance> getByMonthAndEmail(int month, String email) {
         List<Balance> balances = balanceService.getBalanceByMonthAndEmail(month, email);
-        if (balances.isEmpty()) {
-            return null;
-        }
+        
         return balances;
     }
 }
